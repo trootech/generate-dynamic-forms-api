@@ -1,0 +1,98 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    title Reset Form
+    style(type='text/css').
+      .form_mn_body {
+      text-align: center;
+      padding: 50px 0;
+      margin: 0;
+      }
+      .form_mn {
+      width: 50%;
+      display: inline-block;
+      padding: 40px !important;
+      border-radius: 5px !important;
+      box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 10%);
+      }
+      .form_mn .logo {
+      text-align: center;
+      margin-bottom: 20px;
+      }
+      .new_pw_mn , .confirm_pw_mn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 20px;
+      }
+      .new_pw_mn p , .confirm_pw_mn p , .new_pw_mn input , .confirm_pw_mn input {
+      width: 50% !important;
+      }
+      .reser_pw_mn p {
+      width: 100% !important;
+      font-size: 30px !important;
+      color: #000;
+      font-weight: 600;
+      margin-bottom: 20px !important;
+      }
+      .new_pw_mn p , .confirm_pw_mn p {
+      font-size: 20px !important;
+      margin: 0 !important;
+      text-align: left;
+      }
+      .new_pw_mn input, .confirm_pw_mn input {
+      border: 1px solid #CFCFCF;
+      background: #EBEBEB;
+      padding: 10px 15px;
+      border-radius: 5px;
+      }
+      .logo img {
+            width: 59%;
+      }
+      img {
+          width: 59%;
+      }
+      .password_form button {
+      margin-top: 10px;
+      background: #000 !important;
+      padding: 14px 30px;
+      color: #fff !important;
+      border-radius: 5px;
+      border: none !important;
+      }
+      @media (max-width: 1024px){
+      .form_mn {
+      width: 80% !important;
+      }
+      }
+      @media (max-width: 767px){
+      .form_mn {
+      padding: 30px 20px !important;
+      }
+      .new_pw_mn, .confirm_pw_mn {
+      flex-wrap: wrap;
+      }
+      .new_pw_mn p, .confirm_pw_mn p {
+      margin-bottom: 10px !important;
+      }
+      .new_pw_mn p, .confirm_pw_mn p , .new_pw_mn input, .confirm_pw_mn input {
+      width: 100% !important;
+      }
+      }
+  body.form_mn_body
+   form(method='POST')
+    .form_mn
+      .logo
+        img(src='http://localhost:5000/logo/new-dec-trootech_logo-2.png')
+      .password_form
+        .reser_pw_mn
+          p Reset Password
+        .new_pw_mn
+          p(for='password') New Password:
+          input(type='password' name='password', value='' placeholder='New password', autofocus=true , required='')
+        .confirm_pw_mn
+          p(for='confirm') Confirm Password:
+          input(type='password' name='confirmPassword' , value='' placeholder='Confirm password' , required='')
+        button(type='submit') Update Password
