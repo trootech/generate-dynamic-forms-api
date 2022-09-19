@@ -177,7 +177,9 @@ exports.UpdateProfileImage = async (req, res) => {
       // const path = __dirname+"/../public"+userdata.profile_image
       const path = `${__dirname}/../public${userdata.profile_image}`
       console.log(path);
-      fs.unlinkSync(path)
+      if(fs.existsSync(path)) {
+        fs.unlinkSync(path)
+      }
     }
     let imagestring = req.file.filepath + req.file.filename
     data.profile_image = imagestring

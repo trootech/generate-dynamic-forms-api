@@ -66,6 +66,7 @@ exports.UpdateForm = async (req, res) => {
 
     let data = req.body;
     let fieldsarr = data.fields;
+    let isError = false;
 
     Forms.findOneAndUpdate({ _id: data._id}, data).then((info) => {
         if (info) {
@@ -78,19 +79,13 @@ exports.UpdateForm = async (req, res) => {
                             if(fieldres) {
                                 if(index === fieldId.length -1) {
                                     data.fields_id = fieldres;
-                                    res.json({
-                                        success: true,
-                                        message: labelmsg.updatemsg
-                                    })
+
                                 }
                             }
 
                         }).catch(err => {
                                 if(err){
-                                    res.status(500).json({
-                                        success : false,
-                                        message : labelmsg.updatefailuremsg
-                                    })
+                                    isError = true;
                                 }
                         })
                     } else {
@@ -114,6 +109,13 @@ exports.UpdateForm = async (req, res) => {
                         })
                     }
                 });
+                if(isError) {
+                    return  res.status(500).json({
+                          success : false,
+                          message : labelMessage.updatefailuremsg
+                      })
+                  }
+
 
                return res.json({
                     success: true,
